@@ -34,7 +34,7 @@ int main () {
 
             operation_t new_t;
 
-            new_t.o_num = num;
+            new_t.o_timestamp = num;
             new_t.o_id = id;
             new_t.o_op = op;
             new_t.o_attr = attr;

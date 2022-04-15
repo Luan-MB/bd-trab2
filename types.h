@@ -9,7 +9,7 @@ using namespace std;
 
 typedef struct operation_t {
 
-    int o_num;
+    int o_timestamp;
     int o_id;
     char o_op;
     char o_attr;

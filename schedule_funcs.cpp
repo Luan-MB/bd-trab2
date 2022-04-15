@@ -14,15 +14,13 @@ static bool find_loop (vector<vector<int>> &adj_matrix, set<int> &open_vertex, i
 
     for(int j = 0; j < adj_matrix[i].size(); ++j)
         if (adj_matrix[i][j] == 1) {
-            if (open_vertex.find(j) != open_vertex.end())
-                return 1;
-            if (find_loop(adj_matrix, open_vertex, j) == 1)
+            if ((open_vertex.find(j) != open_vertex.end()) ||
+                (find_loop(adj_matrix, open_vertex, j)) == 1)
                 return 1;
         }
     
     open_vertex.erase(i);
     return 0;
-
 }
 
 bool is_serial (schedule_t *schedule) {

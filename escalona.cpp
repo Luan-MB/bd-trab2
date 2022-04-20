@@ -22,13 +22,18 @@ int main () {
     int num, id;
     char op, attr;
 
+    // while there is a line to read
     while (cin.getline(transaction_input, MAX_SIZE, '\n')) {
 
+        // parse the arguments
         sscanf(transaction_input, "%d %d %c %c", &num, &id, &op, &attr);
 
+        // insert operation id on open trasactions set
         open_transactions.insert(id);
 
+        // if operation operation is a Commit
         if (op == 'C')
+            // remove operation id from open transactions
             open_transactions.erase(id);
         else {
 
@@ -44,25 +49,30 @@ int main () {
 
         }
         
+        // if there are no open transactions
         if (open_transactions.empty()) {
             cout << schedules_id++ << ' ';
 
             set<int>::iterator o_ids = schedule.s_tids.begin();
 
+            // print the ids of the operations on the schedule
             for (int i = 0; i < (schedule.s_tids.size() - 1); ++i)
                 cout << *o_ids++ << ',';
             cout << *o_ids; 
 
-            if (is_serial(&schedule))
+            // check wether schedule is serializable or not
+            if (is_serializable(&schedule))
                 cout << " SS";
             else
                 cout << " NS";
-
+            
+            // same for equivalent view
             if (equivalent_view(&schedule))
                 cout << " SV" << endl;
             else    
                 cout << " NV" << endl;
 
+            // clear the schedule arrays and sets
             schedule.s_tids.clear();
             schedule.s_transactions.clear();
         }

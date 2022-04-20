@@ -5,6 +5,6 @@
 #include "types.h"
 
 bool equivalent_view (schedule_t *schedule);
-bool is_serial (schedule_t *schedule);
+bool is_serializable (schedule_t *schedule);
 
 #endif

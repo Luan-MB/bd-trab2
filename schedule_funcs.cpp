@@ -80,7 +80,7 @@ bool is_serializable (schedule_t *schedule) {
     set<int> open_vertex;
 
     // call find_loop for every vertex in graph
-    for (int i = 0; i < vertex_num; ++i)
+    for (int i = 0; i < (vertex_num-1); ++i)
         if (find_loop(adj_matrix, open_vertex, i))
             return 0;
 
